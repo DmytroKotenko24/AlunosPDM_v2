@@ -38,13 +38,6 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        gestorContactos = new GestaoPessoas();
-        gestorContactos.initPessoas();
-        lv = findViewById(R.id.listview);
-        adapter = new ListViewAdapter(gestorContactos.getListaPessoas(), this);
-        lv.setAdapter(adapter);
-        lv.setOnItemClickListener(adapter);
-
         if (savedInstanceState == null) {
             gestorContactos = new GestaoPessoas();
             gestorContactos.lerFicheiro(this);
@@ -55,7 +48,15 @@ public class MainActivity extends AppCompatActivity {
         if (gestorContactos.getListaPessoas().isEmpty()) {
             gestorContactos.initPessoas();
         }
+
+         /* gestorContactos = new GestaoPessoas();
+        gestorContactos.initPessoas();*/
+        lv = findViewById(R.id.listview);
+        adapter = new ListViewAdapter(gestorContactos.getListaPessoas(), this);
+        lv.setAdapter(adapter);
+        lv.setOnItemClickListener(adapter);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
